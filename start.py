@@ -22,15 +22,15 @@ def main_menu():
 
     if usr_choice == '1':
         print('\nAvailable tests in database\n---------------------------')
-        print(db.read_file())
+        print(db.read_db())
 
     elif usr_choice == '2':
         pass
     elif usr_choice == '3':
         print(f'\n{create_new_test()}\n')
-        usr_choice = input('Would you like to run it? Y/n\n')
-        if usr_choice.upper() == 'Y':
-            pass
+        # usr_choice = input('Would you like to run it? Y/n\n')
+        # if usr_choice.upper() == 'Y':
+        #    pass
     elif usr_choice == '4':
         pass
     elif usr_choice == '5':

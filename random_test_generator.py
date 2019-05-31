@@ -12,6 +12,7 @@ def rand_color():
     return colors[random.randint(1, 3)]
 
 
+# FIXME add spaces between the colors
 def create_new_test():
     rows = random.randint(5, 50)
     cols = random.randint(5, 50)
@@ -24,4 +25,4 @@ def create_new_test():
 
         matrix += m_str + '\n'
 
-    return db.write_file(matrix, rows, cols)
+    return db.create_file(matrix, rows, cols)

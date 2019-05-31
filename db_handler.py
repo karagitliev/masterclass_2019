@@ -7,55 +7,51 @@ DB_DIR = 'database'
 TESTS_DIR = 'tests'
 
 
-def update_db():
+def update_db(rows=None, cols=None):
     files = os.listdir(TESTS_DIR)
 
     with open(TESTS_INFO) as f:
         data = json.load(f)
 
+    # FIXME update DB FILE if a test file is removed
     for file in files:
-        if file not in data:
-            test_info = {
-                file: {
-                    'update_time': time.time(),
-                    'used': 'NO',
-                    'matrix_params': '',
-                }
-            }
-            data[file] = test_info
+        if 'test_' not in file:
+            continue
 
-    with open(TESTS_INFO, 'w') as outfile:
+        (prefix, num) = file.split('_')
+        if num not in data:
+            test_info = {
+                'file_name': file,
+                'create_time': time.time(),
+                'used': 'NO',
+                'matrix_params': f'{rows} rows by {cols} cols',
+            }
+            data[num] = test_info
+
+    with open(TESTS_INFO, 'w+') as outfile:
         json.dump(data, outfile, indent=4)
 
 
-def read_file():
+def read_db():
     with open(TESTS_INFO) as f:
         data = json.load(f)
 
-        print(data)
+    last_test = max(data.keys())
+
+    return int(last_test) + 1
 
 
-def write_file(test_data):
-    files = os.listdir(TESTS_DIR)
+def create_file(matrix, rows, cols):
+    prefix = 'test_'
+    new_test_num = str(read_db())
+    new_test = prefix + new_test_num
 
-    tests = []
-    for file in files:
-        (prefix, test_num) = file.split('_')
-        tests.append(test_num)
+    f = open(f'{TESTS_DIR}/{new_test}', "w+")
 
-    new_test = int(max(tests)) + 1
-    test_name = 'test_' + str(new_test)
-    f = open(f'{TESTS_DIR}/{test_name}', "w+")
-
+    test_data = f'{rows} {cols}\n'
+    test_data += matrix
     f.write(test_data)
 
-    test_info = {
-        test_name: {
-            'create_time': time.time(),
-            'used': 'NO',
-            'matrix_params': f'{rows} rows by {cols} cols',
-        }
-    }
-    update_db(test_info)
+    update_db(rows, cols)
 
-    return f'test_{new_test} was created successfully'
+    return f'{new_test} was created successfully'

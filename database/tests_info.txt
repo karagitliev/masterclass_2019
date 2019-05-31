@@ -1,37 +1,32 @@
 {
-    "test_1": {
-        "test_1": {
-            "update_time": 1559310417.664882,
-            "used": "NO",
-            "matrix_params": ""
-        }
+    "1": {
+        "file_name": "test_1",
+        "create_time": 1559322756.436457,
+        "used": "NO",
+        "matrix_params": "None rows by None cols"
     },
-    "new": {
-        "new": {
-            "update_time": 1559310417.664883,
-            "used": "NO",
-            "matrix_params": ""
-        }
+    "3": {
+        "file_name": "test_3",
+        "create_time": 1559322756.43646,
+        "used": "NO",
+        "matrix_params": "None rows by None cols"
     },
-    "test_3": {
-        "test_3": {
-            "update_time": 1559310417.664883,
-            "used": "NO",
-            "matrix_params": ""
-        }
+    "4": {
+        "file_name": "test_4",
+        "create_time": 1559322756.436461,
+        "used": "NO",
+        "matrix_params": "None rows by None cols"
     },
-    "test_4": {
-        "test_4": {
-            "update_time": 1559310417.664883,
-            "used": "NO",
-            "matrix_params": ""
-        }
+    "2": {
+        "file_name": "test_2",
+        "create_time": 1559322756.4364622,
+        "used": "NO",
+        "matrix_params": "None rows by None cols"
     },
-    "test_2": {
-        "test_2": {
-            "update_time": 1559310417.6648839,
-            "used": "NO",
-            "matrix_params": ""
-        }
+    "5": {
+        "file_name": "test_5",
+        "create_time": 1559322760.1166022,
+        "used": "NO",
+        "matrix_params": "37 rows by 7 cols"
     }
 }
