@@ -14,15 +14,15 @@ def rand_color():
 
 # FIXME add spaces between the colors
 def create_new_test():
-    rows = random.randint(5, 50)
-    cols = random.randint(5, 50)
+    rows = random.randint(6, 15)
+    cols = random.randint(6, 15)
 
     matrix = ''
     for row in range(0, rows):
-        m_str = ''
+        col_arr = []
         for col in range(0, cols):
-            m_str += ' '.join(rand_color())
+            col_arr.append(rand_color())
 
-        matrix += m_str + '\n'
+        matrix += ' '.join(col_arr) + '\n'
 
     return db.create_file(matrix, rows, cols)

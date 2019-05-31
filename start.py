@@ -22,7 +22,11 @@ def main_menu():
 
     if usr_choice == '1':
         print('\nAvailable tests in database\n---------------------------')
-        print(db.read_db())
+        all_tests = db.read_db('show_all')
+        print(*all_tests, sep=' ')
+
+        print('\nType the name or names(separated by whitespace) of the tests:\n')
+        usr_choice = input()
 
     elif usr_choice == '2':
         pass
