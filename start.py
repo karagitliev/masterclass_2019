@@ -1,5 +1,6 @@
 import os
-from core.random_test_generator import create_new_test
+from random_test_generator import create_new_test
+import db_handler as db
 
 os.system('clear')
 
@@ -8,6 +9,8 @@ print('ONE DOES NOT SIMPLY SOLVE THE TASK\n\n')
 
 
 def main_menu():
+    db.update_db()
+
     print('Please choose an option\n-----------------------\n')
     print('1 - Run one or multiple tests')
     print('2 - Run one or more tests manually')
@@ -18,7 +21,9 @@ def main_menu():
     usr_choice = input('Enter number: ')
 
     if usr_choice == '1':
-        pass
+        print('\nAvailable tests in database\n---------------------------')
+        print(db.read_file())
+
     elif usr_choice == '2':
         pass
     elif usr_choice == '3':
