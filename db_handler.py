@@ -52,7 +52,7 @@ def create_file(matrix, rows, cols):
     new_test_num = str(read_db('create_file'))
     new_test = prefix + new_test_num
 
-    f = open(f'{TESTS_DIR}/{new_test}', "w+")
+    f = open(f'{TESTS_DIR}/{new_test}', 'w+')
 
     test_data = f'{rows} {cols}\n'
     test_data += matrix

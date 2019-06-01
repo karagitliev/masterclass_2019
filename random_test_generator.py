@@ -12,10 +12,9 @@ def rand_color():
     return colors[random.randint(1, 3)]
 
 
-# FIXME add spaces between the colors
 def create_new_test():
-    rows = random.randint(6, 15)
-    cols = random.randint(6, 15)
+    rows = random.randint(10, 25)
+    cols = rows
 
     matrix = ''
     for row in range(0, rows):
