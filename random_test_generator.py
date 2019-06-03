@@ -13,7 +13,7 @@ def rand_color():
 
 
 def create_new_test():
-    rows = random.randint(10, 25)
+    rows = random.randint(25, 25)
     cols = rows
 
     matrix = ''
