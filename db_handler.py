@@ -3,8 +3,8 @@ import json
 import time
 
 TESTS_INFO = 'database/tests_info.txt'
-DB_DIR = 'database'
-TESTS_DIR = 'tests'
+DB_DIR = 'database/'
+TESTS_DIR = 'tests/'
 
 
 def update_db(rows=None, cols=None):

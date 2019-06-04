@@ -23,32 +23,39 @@ def main_menu():
     usr_choice = input('Enter a number: ')
 
     if usr_choice == '1':
-        print('\nAvailable tests in database\n---------------------------')
-        all_tests = db.read_db('show_all')
-        print(*all_tests, sep=' ')
-
-        print('\nType the name/s (separated by whitespace)\n')
-        usr_choice = input().split()
-        data = [0]
-        for item in usr_choice:
-            item = 'tests/' + item
-            data.append(item)
-        algorithm.parse_file(data)
-
+        run_test()
     elif usr_choice == '2':
         print('\nType the absolute path or paths(separated by whitespace) of the test:\n')
         usr_choice = input()
     elif usr_choice == '3':
-        data = [0]
-        new_test = 'tests/' + create_new_test()
-        data.append(new_test)
-        usr_choice = input(f'\n{new_test} was created, would you like to run it? Y/n\n')
-        if usr_choice.upper() == 'Y':
-            algorithm.parse_file(data)
-        else:
-            main_menu()
+        create_test()
     elif usr_choice == '4':
         exit()
+
+
+def run_test():
+    print('\nAvailable tests in database\n---------------------------')
+    all_tests = db.read_db('show_all')
+    print(*all_tests, sep=' ')
+
+    print('\nType the name/s (separated by whitespace)\n')
+    usr_choice = input().split()
+    data = [0]
+    for item in usr_choice:
+        item = db.TESTS_DIR + item
+        data.append(item)
+    algorithm.parse_file(data)
+
+
+def create_test():
+    data = [0]
+    new_test = db.TESTS_DIR + create_new_test()
+    data.append(new_test)
+    usr_choice = input(f'\n{new_test} was created, would you like to run it? Y/n\n')
+    if usr_choice.upper() == 'Y':
+        algorithm.parse_file(data)
+    else:
+        main_menu()
 
 
 if __name__ == "__main__" and len(sys.argv) == 1:
