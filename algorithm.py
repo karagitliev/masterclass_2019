@@ -1,6 +1,3 @@
-import sys
-
-
 STEPS = ((-1, 0), (1, 0), (0, -1), (0, 1))
 
 
@@ -27,12 +24,12 @@ def longest_sequence(grid, key):
 
 
 # FIXME add multiple tests input and outp
-if __name__ == "__main__":
+def parse_file(data):
     grid = []
     uniq = {}
 
-    for i in range(len(sys.argv)-1):
-        f = open(sys.argv[i+1])
+    for i in range(len(data)-1):
+        f = open(data[i+1])
 
         dimension = f.readline().split(' ')
         n = int(dimension[0])

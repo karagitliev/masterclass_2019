@@ -13,11 +13,12 @@ def update_db(rows=None, cols=None):
     with open(TESTS_INFO) as f:
         data = json.load(f)
 
-    # FIXME update DB FILE if a test file is removed
+    # FIXME update DB FILE if a file in tests is removed
     for file in files:
         if 'test_' not in file:
             continue
 
+        # NOTE add del time if file is deleted
         (prefix, num) = file.split('_')
         if num not in data:
             test_info = {
@@ -47,6 +48,7 @@ def read_db(req_type):
         return int(last_test) + 1
 
 
+# FIXME new files go up to 10 only - check why
 def create_file(matrix, rows, cols):
     prefix = 'test_'
     new_test_num = str(read_db('create_file'))
