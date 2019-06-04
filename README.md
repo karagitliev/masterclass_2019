@@ -1,7 +1,7 @@
 # strypes_assignment
 
 Start the application by executing start.py. If no arguments are provided
-the app will initialise a user interface where you can choose the following:
+the app will initialise a console interface where you can choose the following:
 
     1 - Run one or multiple tests from /tests
     2 - Run one or more tests manually
@@ -9,11 +9,11 @@ the app will initialise a user interface where you can choose the following:
     4 - Quit
 
     1. The app scans all valid files in the /test folder and lists them to user.
-        User can choose to execute from one to all tests available
+        User can choose to execute from one to all tests available.
         #note - every time the app is executed, database is updated
-    2. User can choose to run test/test from another location - just type the
-        absolute path to the file/s. When the file is run, the app automatically
-        adds it to the database(/tests folder).
+    2. User can choose to run test/tests from another location - just type the
+        absolute path to the file/s. When the file is executed, the app automatically
+        adds it to the database(/tests folder). User can later run it from there.
     3. App creates a random combination of 2D matrix in /tests folder. User can
         choose to run the test afterwards.
     4. App plays Rammstein’s new single (sadly, this functionality is still in

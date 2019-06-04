@@ -62,7 +62,7 @@ def create_test():
     new_test = db.TESTS_DIR + create_new_test()
     usr_choice = input(f'\n{new_test} was created, would you like to run it? Y/n\n')
     if usr_choice.upper() == 'Y':
-        algorithm.parse_file(new_test)
+        algorithm.parse_file(new_test, 'menu')
     else:
         main_menu()
 
