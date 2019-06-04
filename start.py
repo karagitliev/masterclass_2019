@@ -5,7 +5,6 @@ import db_handler as db
 from random_test_generator import create_new_test
 
 
-# FIXME menu needs major refactoring, move choices to functions
 def main_menu():
     db.update_db()
 
@@ -60,12 +59,10 @@ def run_test(new_test=None):
 
 
 def create_test():
-    data = ['0']
     new_test = db.TESTS_DIR + create_new_test()
-    data.append(new_test)
     usr_choice = input(f'\n{new_test} was created, would you like to run it? Y/n\n')
     if usr_choice.upper() == 'Y':
-        algorithm.parse_file(data)
+        algorithm.parse_file(new_test)
     else:
         main_menu()
 
@@ -77,6 +74,5 @@ if __name__ == "__main__" and len(sys.argv) == 1:
     main_menu()
 else:
     sys.argv.pop(0)
-#    print(sys.argv)
     for item in sys.argv:
         algorithm.parse_file(item, 'sys')

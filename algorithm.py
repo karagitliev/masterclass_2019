@@ -23,8 +23,6 @@ def longest_sequence(grid, key):
     return result
 
 
-# FIXME add multiple tests input and outp
-# FIXME if two tests are initialised, outp returns sum ot them
 def parse_file(data, type=None):
     grid = []
     uniq = {}
