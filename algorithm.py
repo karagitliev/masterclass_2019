@@ -25,12 +25,14 @@ def longest_sequence(grid, key):
 
 # FIXME add multiple tests input and outp
 # FIXME if two tests are initialised, outp returns sum ot them
-def parse_file(data):
+def parse_file(data, type=None):
     grid = []
     uniq = {}
 
-    for i in range(len(data)-1):
-        f = open(data[i+1])
+    data.pop(0)
+    for i in range(len(data)):
+        t_name = i
+        f = open(data[i])
 
         dimension = f.readline().split(' ')
         n = int(dimension[0])
@@ -49,12 +51,15 @@ def parse_file(data):
 
         f.close()
 
-    longest = []
-    if len(uniq) == 1:  # if matrix contains only 1 symbol
-        print(n * m)
-    else:
-        for key in uniq:
-            longest.append(longest_sequence(grid, ord(key)))
+        longest = []
+        if len(uniq) == 1:  # if matrix contains only 1 symbol
+            print(n * m)
+        else:
+            for key in uniq:
+                longest.append(longest_sequence(grid, ord(key)))
 
-    if longest:
-        print(max(longest))
+        if longest:
+            if type == 'menu':
+                print(f'\n{data[t_name]}\nLongest adjacent sequence: {max(longest)}\n')
+            else:
+                print(max(longest))

@@ -37,6 +37,7 @@ def add_to_database():
         item = item.split('/')[-1]
         data.append(item)
 
+    db.update_db()
     run_test(data)
 
 
@@ -55,7 +56,7 @@ def run_test(new_test=None):
     for item in usr_input:
         item = db.TESTS_DIR + item
         data.append(item)
-    algorithm.parse_file(data)
+    algorithm.parse_file(data, 'menu')
 
 
 def create_test():
@@ -75,4 +76,4 @@ if __name__ == "__main__" and len(sys.argv) == 1:
 
     main_menu()
 else:
-    algorithm.parse_file(sys.argv)
+    algorithm.parse_file(sys.argv, 'sys')
