@@ -10,6 +10,7 @@ os.system('clear')
 print('ONE DOES NOT SIMPLY SOLVE THE TASK\n')
 
 
+# FIXME menu needs major refactoring, move choices to functions
 def main_menu():
     db.update_db()
 
@@ -38,10 +39,12 @@ def main_menu():
         print('\nType the absolute path or paths(separated by whitespace) of the test:\n')
         usr_choice = input()
     elif usr_choice == '3':
-        print(f'\n{create_new_test()}\n')
-        usr_choice = input('Would you like to run it? Y/n\n')
+        data = [0]
+        new_test = 'tests/' + create_new_test()
+        data.append(new_test)
+        usr_choice = input(f'\n{new_test} was created, would you like to run it? Y/n\n')
         if usr_choice.upper() == 'Y':
-            pass
+            algorithm.parse_file(data)
         else:
             main_menu()
     elif usr_choice == '4':

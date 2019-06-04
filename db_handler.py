@@ -62,4 +62,4 @@ def create_file(matrix, rows, cols):
 
     update_db(rows, cols)
 
-    return f'{new_test} was created successfully'
+    return new_test
