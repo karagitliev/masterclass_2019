@@ -29,37 +29,37 @@ def parse_file(data, type=None):
     grid = []
     uniq = {}
 
-    data.pop(0)
-    for i in range(len(data)):
-        t_name = i
-        f = open(data[i])
+    f = open(data)
 
-        dimension = f.readline().split(' ')
-        n = int(dimension[0])
-        m = int(dimension[1])
+    dimension = f.readline().split(' ')
+    n = int(dimension[0])
+    m = int(dimension[1])
 
-        for i in range(n):
-            line = f.readline().replace('\n', '')
-            ltrs = line.split()
+    for i in range(n):
+        line = f.readline().replace('\n', '')
+        ltrs = line.split()
 
-            # convert ltrs to nums
-            nums = []
-            for ltr in ltrs:
-                nums.append(ord(ltr))
-                uniq[ltr] = 0  # get unique values here
-            grid.append(nums)
+        # convert ltrs to nums
+        nums = []
+        for ltr in ltrs:
+            nums.append(ord(ltr))
+            uniq[ltr] = 0  # get unique values here
+        grid.append(nums)
 
-        f.close()
-
-        longest = []
-        if len(uniq) == 1:  # if matrix contains only 1 symbol
-            print(n * m)
+    f.close()
+    if len(uniq) == 1:  # if matrix contains only 1 symbol
+        if type == 'menu':
+            print(f'\n{data}\nLongest adjacent sequence: {n * m}\n')
         else:
-            for key in uniq:
-                longest.append(longest_sequence(grid, ord(key)))
+            print(n * m)
+    else:
+        longest = []
+
+        for key in uniq:
+            longest.append(longest_sequence(grid, ord(key)))
 
         if longest:
             if type == 'menu':
-                print(f'\n{data[t_name]}\nLongest adjacent sequence: {max(longest)}\n')
+                print(f'\n{data}\nLongest adjacent sequence: {max(longest)}\n')
             else:
                 print(max(longest))

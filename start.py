@@ -56,7 +56,7 @@ def run_test(new_test=None):
     for item in usr_input:
         item = db.TESTS_DIR + item
         data.append(item)
-    algorithm.parse_file(data, 'menu')
+        algorithm.parse_file(item, 'menu')
 
 
 def create_test():
@@ -76,4 +76,7 @@ if __name__ == "__main__" and len(sys.argv) == 1:
 
     main_menu()
 else:
-    algorithm.parse_file(sys.argv, 'sys')
+    sys.argv.pop(0)
+#    print(sys.argv)
+    for item in sys.argv:
+        algorithm.parse_file(item, 'sys')
