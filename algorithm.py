@@ -24,6 +24,7 @@ def longest_sequence(grid, key):
 
 
 # FIXME add multiple tests input and outp
+# FIXME if two tests are initialised, outp returns sum ot them
 def parse_file(data):
     grid = []
     uniq = {}
@@ -49,7 +50,7 @@ def parse_file(data):
         f.close()
 
     longest = []
-    if len(uniq) == 1:
+    if len(uniq) == 1:  # if matrix contains only 1 symbol
         print(n * m)
     else:
         for key in uniq:

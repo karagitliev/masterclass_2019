@@ -4,11 +4,6 @@ import algorithm
 import db_handler as db
 from random_test_generator import create_new_test
 
-os.system('clear')
-
-
-print('ONE DOES NOT SIMPLY SOLVE THE TASK\n')
-
 
 # FIXME menu needs major refactoring, move choices to functions
 def main_menu():
@@ -25,30 +20,46 @@ def main_menu():
     if usr_choice == '1':
         run_test()
     elif usr_choice == '2':
-        print('\nType the absolute path or paths(separated by whitespace) of the test:\n')
-        usr_choice = input()
+        add_to_database()
     elif usr_choice == '3':
         create_test()
     elif usr_choice == '4':
         exit()
 
 
-def run_test():
-    print('\nAvailable tests in database\n---------------------------')
-    all_tests = db.read_db('show_all')
-    print(*all_tests, sep=' ')
+def add_to_database():
+    print('\nType the absolute path or paths(separated by whitespace) of the test:\n')
+    usr_input = input().split()
 
-    print('\nType the name/s (separated by whitespace)\n')
-    usr_choice = input().split()
-    data = [0]
-    for item in usr_choice:
+    data = []
+    for item in usr_input:
+        os.system(f'cp {item} {db.TESTS_DIR}')
+        item = item.split('/')[-1]
+        data.append(item)
+
+    run_test(data)
+
+
+def run_test(new_test=None):
+    if not new_test:
+        print('\nAvailable tests in database\n---------------------------')
+        all_tests = db.read_db('show_all')
+        print(*all_tests, sep=' ')
+
+        print('\nType the name/s (separated by whitespace)\n')
+        usr_input = input().split()
+    else:
+        usr_input = new_test
+
+    data = ['0']
+    for item in usr_input:
         item = db.TESTS_DIR + item
         data.append(item)
     algorithm.parse_file(data)
 
 
 def create_test():
-    data = [0]
+    data = ['0']
     new_test = db.TESTS_DIR + create_new_test()
     data.append(new_test)
     usr_choice = input(f'\n{new_test} was created, would you like to run it? Y/n\n')
@@ -59,6 +70,9 @@ def create_test():
 
 
 if __name__ == "__main__" and len(sys.argv) == 1:
+    os.system('clear')
+    print('ONE DOES NOT SIMPLY SOLVE THE TASK\n')
+
     main_menu()
 else:
     algorithm.parse_file(sys.argv)
