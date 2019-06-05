@@ -8,11 +8,15 @@ from random_test_generator import create_new_test
 def main_menu():
     db.update_db()
 
-    print('\nPlease choose an option\n-----------------------\n')
-    print('1 - Run one or multiple tests from /tests')
-    print('2 - Run one or more tests manually')
-    print('3 - Generate new random test')
-    print('\n4 - Quit\n')
+    menu = '''Please choose an option
+-----------------------
+1 - Run one or multiple tests from /tests
+2 - Run one or more tests manually
+3 - Generate new random test
+4 - Quit
+'''
+
+    print(menu)
 
     usr_choice = input('Enter a number: ')
 
@@ -27,7 +31,7 @@ def main_menu():
 
 
 def add_to_database():
-    print('\nType the absolute path or paths(separated by whitespace) of the test:\n')
+    print('\nType the absolute path/s of the file/s(separated by whitespace):\n')
     usr_input = input().split()
 
     data = []
@@ -51,10 +55,8 @@ def run_test(new_test=None):
     else:
         usr_input = new_test
 
-    data = ['0']
     for item in usr_input:
         item = db.TESTS_DIR + item
-        data.append(item)
         algorithm.parse_file(item, 'menu')
 
 
