@@ -23,31 +23,28 @@ def longest_sequence(grid, key):
     return result
 
 
-def parse_file(data, type=None):
+def parse_file(f_name, type=None):
     grid = []
     uniq = {}
 
-    f = open(data)
+    with open(f_name) as f:
+        n, m = f.readline().split(' ')
+        n, m = int(n), int(m)
 
-    dimension = f.readline().split(' ')
-    n = int(dimension[0])
-    m = int(dimension[1])
+        for i in range(n):
+            line = f.readline().replace('\n', '')
+            ltrs = line.split()
 
-    for i in range(n):
-        line = f.readline().replace('\n', '')
-        ltrs = line.split()
+            # convert ltrs to nums
+            nums = []
+            for ltr in ltrs:
+                nums.append(ord(ltr))
+                uniq[ltr] = 0  # get unique values here
+            grid.append(nums)
 
-        # convert ltrs to nums
-        nums = []
-        for ltr in ltrs:
-            nums.append(ord(ltr))
-            uniq[ltr] = 0  # get unique values here
-        grid.append(nums)
-
-    f.close()
     if len(uniq) == 1:  # if matrix contains only 1 symbol
         if type == 'menu':
-            print(f'\n{data}\nLongest adjacent sequence: {n * m}\n')
+            print(f'\n{f_name}\nLongest adjacent sequence: {n * m}\n')
         else:
             print(n * m)
     else:
@@ -58,6 +55,6 @@ def parse_file(data, type=None):
 
         if longest:
             if type == 'menu':
-                print(f'\n{data}\nLongest adjacent sequence: {max(longest)}\n')
+                print(f'\n{f_name}\nLongest adjacent sequence: {max(longest)}\n')
             else:
                 print(max(longest))
