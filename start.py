@@ -20,12 +20,12 @@ def main_menu():
 
     usr_choice = input('Enter a number: ')
     menu_items = {
-        '1': run_test(),
-        '2': add_to_database(),
-        '3': create_test(),
-        '4': exit(),
+        '1': run_test,
+        '2': add_to_database,
+        '3': create_test,
+        '4': exit,
     }
-    menu_items[usr_choice]
+    menu_items[usr_choice]()
 
 
 def add_to_database():
