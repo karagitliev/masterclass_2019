@@ -19,15 +19,13 @@ def main_menu():
     print(menu)
 
     usr_choice = input('Enter a number: ')
-
-    if usr_choice == '1':
-        run_test()
-    elif usr_choice == '2':
-        add_to_database()
-    elif usr_choice == '3':
-        create_test()
-    elif usr_choice == '4':
-        exit()
+    menu_items = {
+        '1': run_test(),
+        '2': add_to_database(),
+        '3': create_test(),
+        '4': exit(),
+    }
+    menu_items[usr_choice]
 
 
 def add_to_database():

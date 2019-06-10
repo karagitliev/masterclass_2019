@@ -53,8 +53,7 @@ def parse_file(f_name, type=None):
         for key in uniq:
             longest.append(longest_sequence(grid, ord(key)))
 
-        if longest:
-            if type == 'menu':
-                print(f'\n{f_name}\nLongest adjacent sequence: {max(longest)}\n')
-            else:
-                print(max(longest))
+        if type == 'menu':
+            print(f'\n{f_name}\nLongest adjacent sequence: {max(longest)}\n')
+        else:
+            print(max(longest))
