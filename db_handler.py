@@ -19,7 +19,7 @@ def update_db(rows=None, cols=None):
             continue
 
         # NOTE add del time if file is deleted
-        (prefix, num) = file.split('_')
+        num = file.split('_')[-1]
         if num not in data:
             test_info = {
                 'used': 'NO',
@@ -50,9 +50,8 @@ def read_db(req_type):
 
 # FIXME new files go up to 10 only - check why
 def create_file(matrix, rows, cols):
-    prefix = 'test_'
     new_test_num = str(read_db('create_file'))
-    new_test = prefix + new_test_num
+    new_test = 'test_' + new_test_num
 
     f = open(f'{TESTS_DIR}/{new_test}', 'w+')
 

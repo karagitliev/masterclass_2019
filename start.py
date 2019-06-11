@@ -35,8 +35,8 @@ def add_to_database():
     data = []
     for item in usr_input:
         os.system(f'cp {item} {db.TESTS_DIR}')
-        item = item.split('/')[-1]
-        data.append(item)
+        item_name = item.split('/')[-1]
+        data.append(item_name)
 
     db.update_db()
     run_test(data)
@@ -54,8 +54,7 @@ def run_test(new_test=None):
         usr_input = new_test
 
     for item in usr_input:
-        item = db.TESTS_DIR + item
-        algorithm.parse_file(item, 'menu')
+        algorithm.parse_file(db.TESTS_DIR + item, 'menu')
 
 
 def create_test():

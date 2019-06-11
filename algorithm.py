@@ -1,13 +1,14 @@
 STEPS = ((-1, 0), (1, 0), (0, -1), (0, 1))
 
 
-def sequence_path(grid, x, y, m, n, key):  # dfs
+def sequence_path(grid, x, y, m, n, key):
     if x < 0 or x >= m or y < 0 or y >= n or grid[x][y] != key:
         return 0
     count = 1
     grid[x][y] = 0
     for i, j in STEPS:
         count += sequence_path(grid, x + i, y + j, m, n, key)
+        print(grid)
     return count
 
 
@@ -18,6 +19,7 @@ def longest_sequence(grid, key):
     for i in range(m):
         for j in range(n):
             if grid[i][j] == key:
+                print(i, j)
                 result = max(result, sequence_path(grid, i, j, m, n, key))
 
     return result
@@ -35,14 +37,13 @@ def parse_file(f_name, type=None):
             line = f.readline().replace('\n', '')
             ltrs = line.split()
 
-            # convert ltrs to nums
             nums = []
             for ltr in ltrs:
                 nums.append(ord(ltr))
-                uniq[ltr] = 0  # get unique values here
+                uniq[ltr] = 0
             grid.append(nums)
 
-    if len(uniq) == 1:  # if matrix contains only 1 symbol
+    if len(uniq) == 1:
         if type == 'menu':
             print(f'\n{f_name}\nLongest adjacent sequence: {n * m}\n')
         else:
@@ -50,8 +51,8 @@ def parse_file(f_name, type=None):
     else:
         longest = []
 
-        for key in uniq:
-            longest.append(longest_sequence(grid, ord(key)))
+#        for key in uniq:
+        longest.append(longest_sequence(grid, ord('R')))
 
         if type == 'menu':
             print(f'\n{f_name}\nLongest adjacent sequence: {max(longest)}\n')
